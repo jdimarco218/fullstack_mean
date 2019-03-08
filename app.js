@@ -10,18 +10,6 @@ mongoose.connect(config.database);
 
 mongoose.connection.on('connected', () => {
     console.log('Connected to database '+ config.database);
-    console.log('Listing collections');
-    mongoose.connection.db.listCollections().toArray(function(err, names) {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            names.forEach(function(e,i,a) {
-                mongoose.connection.db.dropCollection(e.name);
-                console.log("--->>", e.name);
-            });
-        }
-    });
 });
 
 mongoose.connection.on('error', (err) => {
